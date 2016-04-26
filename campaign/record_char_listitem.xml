@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+  <!-- Character Aspects -->
+  <windowclass name="char_aspect">
+    <margins control="0,0,0,2"/>
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top/>
+          <right/>
+        </anchored>
+      </genericcontrol>
+      <button_idelete name="idelete">
+        <anchored>
+          <top/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+      </button_idelete>
+
+      <string_textlistitem name="label">
+        <anchored height="20">
+          <top offset="2"/>
+          <left offset="5"/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-25"/>
+        </anchored>
+        <script>
+		function onDoubleClick(x,y)
+			FateChat.aspectMessage(getValue());
+			return true;
+		end
+		</script>	
+      </string_textlistitem>
+	  <linkfield name="link">
+		<anchored>
+			<to>label</to>
+			<position>right</position>
+			<offset>5,0</offset>
+			<size width="20" height="20"/>
+		</anchored>
+		<script>
+		function onDrop(x, y, draginfo) 
+			if draginfo.isType("shortcut") then
+				local class, datasource = draginfo.getShortcutData();
+				if class == "referencetext" or class == "note" then
+					setValue(class, datasource);
+					setVisible(true);
+				end
+			end        
+			return true; 
+		end
+		</script>
+	  </linkfield>
+	  
+    </sheetdata>
+  </windowclass>
+  
+  <!-- Items List Item -->
+  <windowclass name="char_item_item">
+    <margins control="0,0,0,2"/>
+    <script>
+		function onDrop(x, y, draginfo) 
+			if draginfo.isType("shortcut") then
+			  local class, datasource = draginfo.getShortcutData();
+			  if class == "referencetext" or class == "note" or class=="item" then
+				link.setValue(class, datasource);
+				link.setVisible(true);
+			  end
+			end        
+			return true; 
+		end
+    </script>
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top/>
+          <right/>
+        </anchored>
+      </genericcontrol>
+      <button_idelete name="idelete">
+        <anchored>
+          <top/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+      </button_idelete>
+      <linkfield name="link">
+        <anchored width="20" height="20">
+          <top offset="2"/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+        <invisible/>
+        <script>
+          function onInit() 
+            onValueChanged(); 
+          end 
+          
+          function onValueChanged() 
+            setVisible(not isEmpty()); 
+          end 
+        </script>		
+      </linkfield>
+      <string_textlistitem name="label">
+        <anchored height="20">
+          <top offset="2"/>
+          <left offset="5"/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+        <tabtarget next="bonus"/>
+      </string_textlistitem>
+    </sheetdata>
+  </windowclass>
+
+  <windowclass name="char_stunts_item">
+    <margins control="0,0,0,2"/>
+    <script>
+		function onDrop(x, y, draginfo) 
+			if draginfo.isType("shortcut") then
+			  local class, datasource = draginfo.getShortcutData();
+			  if class == "referencetext" or class == "note" then
+				link.setValue(class, datasource);
+				link.setVisible(true);
+			  end
+			end        
+			return true; 
+		end
+		function onDoubleClick(x, y) 
+			if bonus.getValue() ~= 0 then
+				ModifierStack.addSlot(label.getValue(), bonus.getValue()); 
+			end
+        return true; 
+      end 		
+    </script>
+    <sheetdata>
+      <genericcontrol name="rightanchor">
+        <anchored height="0" width="0">
+          <top/>
+          <right/>
+        </anchored>
+      </genericcontrol>
+      <button_idelete name="idelete">
+        <anchored>
+          <top/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+      </button_idelete>
+	  
+      <basicnumber name="bonus">
+        <anchored width="20" height="20">
+        <top offset="2"/>
+        <right parent="rightanchor" anchor="left" relation="relative" offset="-7"/>
+        </anchored>
+        <tabtarget prev="label"/>
+        <script>
+          function onDoubleClick(x, y) 
+            return window.onDoubleClick(x, y); 
+          end
+          
+          function onGainFocus() 
+            window.setFrame("rowshade"); 
+          end 
+          
+          function onLoseFocus() 
+            window.setFrame(nil); 
+          end
+        </script>
+      </basicnumber>
+
+      <linkfield name="link">
+        <anchored height="20" width="20">
+          <top offset="2"/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+        <invisible/>
+        <script>
+          function onInit() 
+            onValueChanged(); 
+          end 
+          
+          function onValueChanged() 
+            setVisible(not isEmpty()); 
+          end 
+        </script>		
+      </linkfield>
+	  
+	  <string_textlistitem name="label">
+        <anchored height="20">
+          <top offset="2"/>
+          <left offset="5"/>
+          <right parent="rightanchor" anchor="left" relation="relative" offset="-5"/>
+        </anchored>
+        <tabtarget next="bonus"/>
+      </string_textlistitem>
+    </sheetdata>
+  </windowclass>  
+  
+    
+</root>

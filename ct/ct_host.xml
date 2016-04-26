@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root merge="merge">
+	<windowclass name="ct_entry" merge="merge">
+		<sheetdata merge="merge">
+		
+		<number_ct name="physicalstress" merge="replace">
+			<anchored width="25" height="20">
+				<top parent="name" anchor="bottom" relation="relative" offset="10" />
+				<left parent="physicalicon" anchor="right" offset="65" />
+			</anchored>
+			<description textres="char_label_stresstrack1" />
+			<hideonvalue value="0" />
+			<default>1</default>
+			<script>
+			  function onInit()
+				onValueChanged();
+			  end
+			  
+			  function onValueChanged() 
+				if getValue() &lt; 0 then 
+				  setValue(0); 
+				elseif getValue() &gt; 9 then 
+				  setValue(9); 
+				end 
+				showTrackItems(getValue());
+			  end
+			  
+			  function showTrackItems( checkNum )
+				window.setPhysicalVisible();
+			  end
+			</script>
+		</number_ct>
+		
+			<number_ct name="mentalstress" merge="replace">
+				<anchored width="25" height="20">
+					<top parent="name" anchor="bottom" relation="relative" offset="10" />
+					<left parent="mentalicon" anchor="right" offset="65" />
+				</anchored>
+				<description textres="char_label_stresstrack2" />
+				<hideonvalue value="0" />
+				<default>1</default>
+				<script>
+				  function onInit()
+					onValueChanged();
+				  end
+				  
+				  function onValueChanged() 
+					if getValue() &lt; 0 then 
+					  setValue(0); 
+					elseif getValue() &gt; 9 then 
+					  setValue(9); 
+					end 
+					showTrackItems(getValue());
+				  end
+				  
+				  function showTrackItems( checkNum )
+					window.setMentalVisible();
+				  end
+				</script>
+			</number_ct>
+		</sheetdata>
+	</windowclass>
+</root>

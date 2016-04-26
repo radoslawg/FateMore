@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root merge="join">
+  <!-- Character Sheet -->
+  <string name="char_label_fatestresstrack">Fate Points</string>
+  <string name="npc_label_aspects">Aspects</string>
+</root>

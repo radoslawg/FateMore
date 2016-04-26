@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<root>
+  <!-- Weapon List -->
+  <template name="list_charweapon">
+    <list_text>
+      <datasource>.weaponlist</datasource>
+      <class>char_item_item</class>
+      <columns width="230" filldown="true"/>
+      <sortby>
+        <control>label</control>
+      </sortby>
+      <newfocus>label</newfocus>
+	  <script>
+			function onDrop(x,y,draginfo)
+			  if draginfo.isType("shortcut") then
+				local class, datasource = draginfo.getShortcutData();
+				if class == "referencetext" or class == "note" or class=="item" then
+				  local newentry = createWindow()
+				  newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+				  newentry.link.setValue(class, datasource);
+				  newentry.link.setVisible(true);
+				end
+			  end
+			  return true;
+			end
+	  </script>  	
+    </list_text>
+  </template>
+  
+  <!-- Armour List -->
+  <template name="list_chararmour">
+    <list_text>
+      <datasource>.armourlist</datasource>
+      <class>char_item_item</class>
+      <columns width="230" filldown="true"/>
+      <sortby>
+        <control>label</control>
+      </sortby>
+      <newfocus>label</newfocus>
+	  <script>
+			function onDrop(x,y,draginfo)
+			  if draginfo.isType("shortcut") then
+				local class, datasource = draginfo.getShortcutData();
+				if class == "referencetext" or class == "note" or class=="item" then
+				  local newentry = createWindow()
+				  newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+				  newentry.link.setValue(class, datasource);
+				  newentry.link.setVisible(true);
+				end
+			  end
+			  return true;
+			end
+	  </script>  	
+    </list_text>
+  </template>
+	
+  <!-- Stunt List -->
+  <template name="list_charstunt">
+    <list_text>
+      <datasource>.stuntlist</datasource>
+      <class>char_stunts_item</class>
+      <columns width="230" filldown="true"/>
+      <sortby>
+        <control>label</control>
+      </sortby>
+      <newfocus>label</newfocus>
+	  <script>
+			function onDrop(x,y,draginfo)
+			  if draginfo.isType("shortcut") then
+				local class, datasource = draginfo.getShortcutData();
+				if class == "referencetext" or class == "note" or class=="item" then
+				  local newentry = createWindow()
+				  newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+				  newentry.link.setValue(class, datasource);
+				  newentry.link.setVisible(true);
+				end
+			  end
+			  return true;
+			end
+	  </script> 
+    </list_text>
+  </template>
+  
+  <template name="list_charconsequence">
+    <list_text>
+      <datasource>.consequencelist</datasource>
+      <class>char_consequence</class>
+      <columns width="280" filldown="true"/>
+      <sortby/>
+    </list_text>
+  </template> 
+  
+  
+</root>

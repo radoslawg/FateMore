@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.0" logo="logo.png"> 
+	<properties>
+		<name>Fate More</name>
+		<version>1.1</version>
+		<author>Radoslaw Grzanka</author>
+		<description>Extended Fate Ruleset</description>
+		<ruleset>
+			<name>Fate Core</name>
+		</ruleset>
+		<loadorder>40</loadorder>
+	</properties>
+
+	<base>
+	<!-- Templates -->
+    <includefile source="campaign/template_char.xml" />
+	
+	<!-- Strings -->
+	<includefile source="strings/strings_campaign.xml" />
+    
+    <!-- Character Sheet -->
+    <includefile source="campaign/record_char_listitem.xml" />
+    <includefile source="campaign/record_npc.xml" />
+	
+	<!-- Combat tracker -->
+
+	<includefile source="ct/ct_host.xml" />
+	<icon name="extension_logo" file="logo.jpg" />		
+	</base>
+	<announcement text="Fate More 1.1b by Radoslaw Grzanka" font="emotefont" icon="extension_logo"/>	
+	
+</root>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="npc_main">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+
+				physicalstress.setReadOnly(bReadOnly);
+				mentalstress.setReadOnly(bReadOnly);
+				fatestress.setReadOnly(bReadOnly);
+				
+				local bSection2 = false;
+				if skills.update(bReadOnly) then bSection2 = true; end;
+				if items.update(bReadOnly) then bSection2 = true; end;
+				if aspects.update(bReadOnly) then bSection2 = true; end;
+				divider.setVisible(bSection2);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<label_column>
+        <!--<anchored to="columnanchor" position="belowleft" offset="15,20" />-->
+				<static textres="char_label_stresstrack1"/>
+			</label_column>
+      <number_column name="physicalstress" source="physicalstress.maxValue">
+        <!--<anchored to="columnanchor" position="belowleft" offset="70,22" width="20" height="15" />-->
+        <script>
+          function onInit()
+            onValueChanged();
+          end
+          
+          function onValueChanged() 
+            if getValue() &lt; 0 then 
+              setValue(0); 
+            elseif getValue() &gt; 9 then 
+              setValue(9); 
+            end 
+            showTrackItems(getValue());
+          end
+          
+          function showTrackItems( checkNum )
+            if checkNum &gt; 0 then window.physicalstress01.setVisible(true) else window.physicalstress01.setVisible(false) end 
+            if checkNum &gt; 1 then window.physicalstress02.setVisible(true) else window.physicalstress02.setVisible(false) end 
+            if checkNum &gt; 2 then window.physicalstress03.setVisible(true) else window.physicalstress03.setVisible(false) end 
+            if checkNum &gt; 3 then window.physicalstress04.setVisible(true) else window.physicalstress04.setVisible(false) end 
+            if checkNum &gt; 4 then window.physicalstress05.setVisible(true) else window.physicalstress05.setVisible(false) end 
+            if checkNum &gt; 5 then window.physicalstress06.setVisible(true) else window.physicalstress06.setVisible(false) end 
+            if checkNum &gt; 6 then window.physicalstress07.setVisible(true) else window.physicalstress07.setVisible(false) end 
+            if checkNum &gt; 7 then window.physicalstress08.setVisible(true) else window.physicalstress08.setVisible(false) end 
+            if checkNum &gt; 8 then window.physicalstress09.setVisible(true) else window.physicalstress09.setVisible(false) end 
+          end
+        </script>
+      </number_column>
+      <stresstrackitem name="physicalstress01">
+        <anchored to="physicalstress" offset="10,0" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress02">
+        <anchored to="physicalstress01" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress03">
+        <anchored to="physicalstress02" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress04">
+        <anchored to="physicalstress03" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress05">
+        <anchored to="physicalstress04" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress06">
+        <anchored to="physicalstress05" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress07">
+        <anchored to="physicalstress06" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress08">
+        <anchored to="physicalstress07" />
+      </stresstrackitem>
+      <stresstrackitem name="physicalstress09">
+        <anchored to="physicalstress08" />
+      </stresstrackitem>
+      
+      <label_column>
+        <!--<anchored to="columnanchor" position="belowleft" offset="15,40" />-->
+				<static textres="char_label_stresstrack2"/>
+			</label_column>
+      <number_column name="mentalstress" source="mentalstress.maxValue">
+        <!--<anchored to="columnanchor" position="belowleft" offset="70,42" width="20" height="15" />-->
+        <script>
+          function onInit()
+            onValueChanged();
+          end
+          
+          function onValueChanged() 
+            if getValue() &lt; 0 then 
+              setValue(0); 
+            elseif getValue() &gt; 9 then 
+              setValue(9); 
+            end 
+            showTrackItems(getValue());
+          end
+          
+          function showTrackItems( checkNum )
+            if checkNum &gt; 0 then window.mentalstress01.setVisible(true) else window.mentalstress01.setVisible(false) end 
+            if checkNum &gt; 1 then window.mentalstress02.setVisible(true) else window.mentalstress02.setVisible(false) end 
+            if checkNum &gt; 2 then window.mentalstress03.setVisible(true) else window.mentalstress03.setVisible(false) end 
+            if checkNum &gt; 3 then window.mentalstress04.setVisible(true) else window.mentalstress04.setVisible(false) end 
+            if checkNum &gt; 4 then window.mentalstress05.setVisible(true) else window.mentalstress05.setVisible(false) end 
+            if checkNum &gt; 5 then window.mentalstress06.setVisible(true) else window.mentalstress06.setVisible(false) end 
+            if checkNum &gt; 6 then window.mentalstress07.setVisible(true) else window.mentalstress07.setVisible(false) end 
+            if checkNum &gt; 7 then window.mentalstress08.setVisible(true) else window.mentalstress08.setVisible(false) end 
+            if checkNum &gt; 8 then window.mentalstress09.setVisible(true) else window.mentalstress09.setVisible(false) end 
+          end
+        </script>
+      </number_column>
+      <stresstrackitem name="mentalstress01">
+        <anchored to="mentalstress" offset="10,0" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress02">
+        <anchored to="mentalstress01" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress03">
+        <anchored to="mentalstress02" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress04">
+        <anchored to="mentalstress03" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress05">
+        <anchored to="mentalstress04" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress06">
+        <anchored to="mentalstress05" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress07">
+        <anchored to="mentalstress06" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress08">
+        <anchored to="mentalstress07" />
+      </stresstrackitem>
+      <stresstrackitem name="mentalstress09">
+        <anchored to="mentalstress08" />
+      </stresstrackitem>
+	  
+      <label_column>
+			<static textres="char_label_fatestresstrack"/>
+			</label_column>
+      <number_column name="fatestress" source="fatestress.maxValue">
+        <script>
+          function onInit()
+            onValueChanged();
+          end
+          
+          function onValueChanged() 
+            if getValue() &lt; 0 then 
+              setValue(0); 
+            elseif getValue() &gt; 9 then 
+              setValue(9); 
+            end 
+            showTrackItems(getValue());
+          end
+          
+          function showTrackItems( checkNum )
+            if checkNum &gt; 0 then window.fatestress01.setVisible(true) else window.fatestress01.setVisible(false) end 
+            if checkNum &gt; 1 then window.fatestress02.setVisible(true) else window.fatestress02.setVisible(false) end 
+            if checkNum &gt; 2 then window.fatestress03.setVisible(true) else window.fatestress03.setVisible(false) end 
+            if checkNum &gt; 3 then window.fatestress04.setVisible(true) else window.fatestress04.setVisible(false) end 
+            if checkNum &gt; 4 then window.fatestress05.setVisible(true) else window.fatestress05.setVisible(false) end 
+            if checkNum &gt; 5 then window.fatestress06.setVisible(true) else window.fatestress06.setVisible(false) end 
+            if checkNum &gt; 6 then window.fatestress07.setVisible(true) else window.fatestress07.setVisible(false) end 
+            if checkNum &gt; 7 then window.fatestress08.setVisible(true) else window.fatestress08.setVisible(false) end 
+            if checkNum &gt; 8 then window.fatestress09.setVisible(true) else window.fatestress09.setVisible(false) end 
+          end
+        </script>
+      </number_column>
+      <stresstrackitem name="fatestress01">
+        <anchored to="fatestress" offset="10,0" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress02">
+        <anchored to="fatestress01" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress03">
+        <anchored to="fatestress02" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress04">
+        <anchored to="fatestress03" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress05">
+        <anchored to="fatestress04" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress06">
+        <anchored to="fatestress05" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress07">
+        <anchored to="fatestress06" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress08">
+        <anchored to="fatestress07" />
+      </stresstrackitem>
+      <stresstrackitem name="fatestress09">
+        <anchored to="fatestress08" />
+      </stresstrackitem>	  
+			
+			<line_column name="divider" />
+
+			<label_column name="aspects_label">
+				<static textres="npc_label_aspects" />
+			</label_column>
+			<string_columnh name="aspects" />
+
+			<label_column name="skills_label">
+				<static textres="npc_label_skills" />
+			</label_column>
+			<string_columnh name="skills">
+				<nodragselect />
+				<script file="campaign/scripts/npc_roll.lua" />
+			</string_columnh>
+
+			<label_column name="items_label">
+				<static textres="npc_label_items" />
+			</label_column>
+			<string_columnh name="items" />
+		</sheetdata>
+	</windowclass>
+</root>
