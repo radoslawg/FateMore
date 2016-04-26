@@ -7,4 +7,6 @@
   <!-- Character Sheet -->
   <string name="char_label_fatestresstrack">Fate Points</string>
   <string name="npc_label_aspects">Aspects</string>
+  <string name="item_label_ammostresstrack">Ammo</string>
+  <string name="item_label_stunts">Stunts</string>
 </root>

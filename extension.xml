@@ -2,7 +2,7 @@
 <root version="3.0" logo="logo.png"> 
 	<properties>
 		<name>Fate More</name>
-		<version>1.1</version>
+		<version>1.2</version>
 		<author>Radoslaw Grzanka</author>
 		<description>Extended Fate Ruleset</description>
 		<ruleset>
@@ -21,12 +21,16 @@
     <!-- Character Sheet -->
     <includefile source="campaign/record_char_listitem.xml" />
     <includefile source="campaign/record_npc.xml" />
+    <includefile source="campaign/record_item.xml" />
 	
 	<!-- Combat tracker -->
 
 	<includefile source="ct/ct_host.xml" />
+    
+    <!-- Icons -->
 	<icon name="extension_logo" file="logo.jpg" />		
+    
 	</base>
-	<announcement text="Fate More 1.1b by Radoslaw Grzanka" font="emotefont" icon="extension_logo"/>	
+	<announcement text="Fate More 1.2 by Radoslaw Grzanka" font="emotefont" icon="extension_logo"/>	
 	
 </root>

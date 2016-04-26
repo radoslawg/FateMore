@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root merge="merge">
+    <windowclass name="item" merge="merge">
+    		<placement merge="replace">
+			<size width="350" height="450" />
+		</placement>
+		<sizelimits merge="replace">
+			<minimum width="350" height="450" />
+			<dynamic />
+		</sizelimits>
+    </windowclass>
+    
+	<windowclass name="item_main">
+		<margins control="0,0,0,2" />
+		<script file="campaign/scripts/item_main.lua" />
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<label_column name="nonid_name_label">
+				<static textres="item_label_unidentified" />
+			</label_column>
+			<string_columnh name="nonid_name" />
+			
+			<label_column name="nonid_notes_label">
+				<static textres="item_label_unidentifiednotes" />
+			</label_column>
+			<string_columnh name="nonid_notes" />
+
+			<line_column name="divider" />
+
+			<label_column name="cost_label">
+				<static textres="item_label_cost" />
+			</label_column>
+			<string_columnh name="cost">
+				<gmeditonly />
+			</string_columnh>
+
+			<label_column name="aspects_label">
+				<static textres="npc_label_aspects" />
+			</label_column>
+			<string_columnh name="stunts" />
+			<label_column name="stunts_label">
+				<static textres="item_label_stunts" />
+			</label_column>
+			<string_columnh name="aspects" />
+            
+            <label_column>
+                <static textres="item_label_ammostresstrack"/>
+                </label_column>
+            <number_column name="ammostress" source="ammostress.maxValue">
+            <script>
+              function onInit()
+                onValueChanged();
+              end
+              
+              function onValueChanged() 
+                if getValue() &lt; 0 then 
+                  setValue(0); 
+                elseif getValue() &gt; 9 then 
+                  setValue(9); 
+                end 
+                showTrackItems(getValue());
+              end
+              
+              function showTrackItems( checkNum )
+                if checkNum &gt; 0 then window.ammostress01.setVisible(true) else window.ammostress01.setVisible(false) end 
+                if checkNum &gt; 1 then window.ammostress02.setVisible(true) else window.ammostress02.setVisible(false) end 
+                if checkNum &gt; 2 then window.ammostress03.setVisible(true) else window.ammostress03.setVisible(false) end 
+                if checkNum &gt; 3 then window.ammostress04.setVisible(true) else window.ammostress04.setVisible(false) end 
+                if checkNum &gt; 4 then window.ammostress05.setVisible(true) else window.ammostress05.setVisible(false) end 
+                if checkNum &gt; 5 then window.ammostress06.setVisible(true) else window.ammostress06.setVisible(false) end 
+                if checkNum &gt; 6 then window.ammostress07.setVisible(true) else window.ammostress07.setVisible(false) end 
+                if checkNum &gt; 7 then window.ammostress08.setVisible(true) else window.ammostress08.setVisible(false) end 
+                if checkNum &gt; 8 then window.ammostress09.setVisible(true) else window.ammostress09.setVisible(false) end 
+              end
+            </script>
+            </number_column>
+            <stresstrackitem name="ammostress01">
+            <anchored to="ammostress" offset="10,0" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress02">
+            <anchored to="ammostress01" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress03">
+            <anchored to="ammostress02" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress04">
+            <anchored to="ammostress03" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress05">
+            <anchored to="ammostress04" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress06">
+            <anchored to="ammostress05" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress07">
+            <anchored to="ammostress06" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress08">
+            <anchored to="ammostress07" />
+            </stresstrackitem>
+            <stresstrackitem name="ammostress09">
+            <anchored to="ammostress08" />
+            </stresstrackitem>	              
+
+			<line_column name="divider2" />
+
+			<ft_columnh name="notes">
+				<gmeditonly />
+			</ft_columnh>
+		</sheetdata>
+	</windowclass>
+</root>
