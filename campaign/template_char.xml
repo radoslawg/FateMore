@@ -85,6 +85,33 @@
     </list_text>
   </template>
   
+  <!-- Gear List -->
+  <template name="list_chargear">
+    <list_text>
+      <datasource>.gearlist</datasource>
+      <class>char_item_item</class>
+      <columns width="230" filldown="true"/>
+      <sortby>
+        <control>label</control>
+      </sortby>
+      <newfocus>label</newfocus>
+	  <script>
+			function onDrop(x,y,draginfo)
+			  if draginfo.isType("shortcut") then
+				local class, datasource = draginfo.getShortcutData();
+				if class == "referencetext" or class == "note" or class=="item" then
+				  local newentry = createWindow()
+				  newentry.label.setValue(draginfo.getDatabaseNode().getChild("name").getValue());
+				  newentry.link.setValue(class, datasource);
+				  newentry.link.setVisible(true);
+				end
+			  end
+			  return true;
+			end
+	  </script>
+    </list_text>
+  </template>
+
   <template name="list_charconsequence">
     <list_text>
       <datasource>.consequencelist</datasource>
