@@ -20,6 +20,7 @@
     
     <!-- Character Sheet -->
     <includefile source="campaign/record_char_listitem.xml" />
+    <includefile source="campaign/record_char_abilities.xml" />
     <includefile source="campaign/record_npc.xml" />
     <includefile source="campaign/record_item.xml" />
 	
